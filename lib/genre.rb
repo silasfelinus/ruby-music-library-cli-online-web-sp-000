@@ -27,4 +27,18 @@ class Genre
     new_genre.save
     new_genre
   end
+
+  def add_song(song)
+    if !song.genre
+      song.genre = self
+    end
+    if !@songs.include?(song)
+      @songs << song
+    end
+  end
+
+
+  def artists
+    @songs.map {|song| song.artist}.uniq
+  end
 end
