@@ -16,23 +16,14 @@ class MusicLibraryController
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
-<<<<<<< HEAD
     answer = gets.chomp
-              binding.pry
-    until answer=='exit'
-
-
-=======
-    until answer=gets.chomp == 'exit'
-      binding.pry
->>>>>>> 9a683df8269c56257f85602455c7926ad7343cd4
+    until answer == "exit"
       if answer == "list songs"
         list_songs
       elsif answer == 'list_artists'
         list_artists
       end
-
-
+      answer = gets.chomp
     end
   end
 
