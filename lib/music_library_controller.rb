@@ -20,7 +20,7 @@ class MusicLibraryController
     until answer == "exit"
       if answer == "list songs"
         list_songs
-      elsif answer == 'list_artists'
+      elsif answer == 'list artists'
         list_artists
       end
       answer = gets.chomp
