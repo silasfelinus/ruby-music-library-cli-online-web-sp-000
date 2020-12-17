@@ -6,12 +6,12 @@ class MusicImporter
   end
 
   def files
-    binding.pry
-    Dir.entries(@path).each {|file| file }[0..-3]
+    Dir.entries(@path).each {|file| file }.select {|entry| entry != "." && entry != ".."}
   end
 
   def import
-    files.each { |filename| Song.create_from_filename(filename)}
+    files.each {|filename| Song.create_from_filename(filename)}
+
   end
 
 
