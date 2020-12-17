@@ -1,8 +1,10 @@
 require "spec_helper"
 
 describe "MusicLibraryController - CLI Methods" do
-  let(:music_library_controller) { MusicLibraryController.new("./spec/fixtures/mp3s") }
-  let(:other_music_library_controller) { MusicLibraryController.new("./spec/fixtures/other_mp3s") }
+    let(:music_library_controller) { MusicLibraryController.new("./spec/fixtures/mp3s") }
+    let(:other_music_library_controller) { MusicLibraryController.new("./spec/fixtures/other_mp3s") }
+
+
 
   describe "#list_songs" do
     it "prints all songs in the music library in a numbered list (alphabetized by song name)" do
@@ -13,6 +15,7 @@ describe "MusicLibraryController - CLI Methods" do
       expect($stdout).to receive(:puts).with("5. Jurassic 5 - What's Golden - hip-hop")
 
       music_library_controller.list_songs
+
     end
 
     it "is not hard-coded" do
@@ -20,6 +23,8 @@ describe "MusicLibraryController - CLI Methods" do
       expect($stdout).to receive(:puts).with("2. Alpha 9 - Bliss - trance")
       expect($stdout).to receive(:puts).with("3. Cass McCombs - County Line - indie")
       expect($stdout).to receive(:puts).with("4. Bob Dylan - Masters of War - folk")
+
+
 
       other_music_library_controller.list_songs
     end

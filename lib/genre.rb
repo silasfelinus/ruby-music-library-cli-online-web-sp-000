@@ -13,7 +13,6 @@ class Genre
     @@all
   end
 
-
   def self.destroy_all
     @@all = []
   end
@@ -36,7 +35,6 @@ class Genre
       @songs << song
     end
   end
-
 
   def artists
     @songs.map {|song| song.artist}.uniq
