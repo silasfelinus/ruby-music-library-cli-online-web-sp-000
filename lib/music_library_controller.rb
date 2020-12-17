@@ -3,6 +3,7 @@ class MusicLibraryController
 
   def initialize(path = './db/mp3s')
     @library = MusicImporter.new(path).import
+
   end
 
   def call
@@ -15,9 +16,21 @@ class MusicLibraryController
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
-    until answer=gets.chomp == 'exit'
+    answer = gets.chomp
+              binding.pry
+    until answer=='exit'
+
+
+      if answer == "list songs"
+        list_songs
+      elsif answer == 'list_artists'
+        list_artists
+      end
+
+
     end
   end
+
 
   def list_songs
     @library.sort_by! {|song| song.split(/ - /)[1]}.each_with_index do |song, index|
@@ -55,8 +68,14 @@ class MusicLibraryController
 
   def play_song
     puts "Which song number would you like to play?"
-
-
+    song_number = gets.chomp
+    if Song.all.length() >= song_number.to_i && song_number.to_i > 0
+      song_chosen = @library.sort_by {|song| song.split(/ - /)[1]}[song_number.to_i - 1]
+    end
+    if song_chosen
+      puts "Playing #{song_chosen.split(/ - /)[1]} by #{song_chosen.split(/ - /)[0]}"
+    end
   end
+
 
 end
