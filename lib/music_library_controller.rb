@@ -18,16 +18,21 @@ class MusicLibraryController
     puts "What would you like to do?"
     answer = gets.chomp
     until answer == "exit"
-      if answer == "list songs"
+      case answer
+      when "list songs"
         list_songs
-      elsif answer == 'list artists'
+      when 'list artists'
         list_artists
-      elsif answer == 'list genres'
+      when 'list genres'
         list_genres
-      elsif answer == 'list artist'
+      when 'list artist'
         list_songs_by_artist
-      elsif answer == 'list genre'
+      when 'list genre'
         list_songs_by_genre
+      when 'play song'
+        play_song
+        
+        
       end
       answer = gets.chomp
     end
