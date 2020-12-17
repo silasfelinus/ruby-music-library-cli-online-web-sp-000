@@ -24,6 +24,8 @@ class MusicLibraryController
         list_artists
       elsif answer == 'list genres'
         list_genres
+      elsif answer == 'list artist'
+        list_songs_by_artist
       end
       answer = gets.chomp
     end
