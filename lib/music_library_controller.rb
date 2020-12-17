@@ -25,8 +25,36 @@ class MusicLibraryController
     end
   end
 
+
   def list_artists
-    artists = @library.map {|song| song.split(/ - /)[0]}.uniq.sort!
+    artists = Artist.all.map {|artist| artist.name}.sort.uniq
     artists.each_with_index {|artist, index| puts "#{index+1}. #{artist}"}
   end
+
+  def list_genres
+    genres = Genre.all.map {|genre| genre.name}.sort.uniq
+    genres.each_with_index {|genre, index| puts "#{index+1}. #{genre}"}
+  end
+
+#
+  def list_songs_by_artist
+    puts "Please enter the name of an artist:"
+    artist = gets.chomp
+    songs = Song.all.select {|song| song.artist.name == artist}.map {|song| "#{song.name} - #{song.genre.name}"}.sort
+    songs.each_with_index {|song, index| puts "#{index+1}. #{song}"}
+  end
+
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    genre = gets.chomp
+    songs = Song.all.select {|song| song.genre.name == genre}.map {|song| "#{song.artist.name} - #{song.name}"}
+    songs.each_with_index {|song, index| puts "#{index+1}. #{song}"}
+
+  end
+
+
+  def play_song
+
+  end
+
 end
